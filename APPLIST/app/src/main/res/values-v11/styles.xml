@@ -1,0 +1,29 @@
+<resources>
+
+    <!--
+        Base application theme for API 11+. This theme completely replaces
+        AppBaseTheme from res/values/styles.xml on API 11+ devices.
+
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
+        <!-- API 11 theme customizations can go here. -->
+    </style>
+
+    <style name="MyFullScreenTheme" parent="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+
+        <!-- 在api level 为11+ 的版本上使用 Theme.Holo 主题 -->
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:colorBackground">@android:color/black</item>
+    </style>
+
+	<style name="down_radius1_black_style">
+	    <item name="android:shadowColor">#fffdfbf2</item>
+	    <item name="android:shadowDx">1.0</item>
+	    <item name="android:shadowDy">1.0</item>
+	    <item name="android:shadowRadius">1.0</item>
+		<item name="android:textColor">@color/black3</item>
+		<item name="android:textSize">30sp</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+
+</resources>

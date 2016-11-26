@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:background="@drawable/my_app_02">
+    
+    <include layout="@layout/navigationbar_common"/>
+
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+	    <com.example.applist.MyViewPager
+	        android:id="@+id/viewpager"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent" />
+	
+	    <LinearLayout
+	        android:id="@+id/viewGroup"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_marginBottom="20dp"
+	        android:gravity="center_horizontal"
+	        android:orientation="horizontal"
+	        android:visibility="invisible" >
+	    </LinearLayout>
+	</RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#000000</color>
+    <color name="tranblack70">#4d000000</color>  
+    <color name="tranblack50">#80000000</color>    
+    <color name="talkingblack">#1e1e1f</color>
+    <color name="white">#ffffff</color>
+    <color name="gray_light">#302e2f</color>
+    <color name="whitegray">#999999</color>
+    <color name="icsblue">#336699</color>
+    <color name="orange">#ffcc00</color>
+    <color name="gray">#666666</color>
+    <color name="gray_">#444444</color>
+    <color name="deepgray">#333333</color>
+    <color name="deepblack">#080808</color>
+    <color name="green">#337700</color>
+    <color name="greena">#68B42F</color>
+    <color name="red">#ff0000</color>
+    <color name="whiteB">#bbbbbb</color>
+    <color name="black2">#222222</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent5">#A0575759</color>
+    <color name="black3">#515151</color>
+    <color name="black6">#666666</color>
+    <color name="black9">#999999</color>
+    <color name="gray4">#444444</color>
+    <color name="whiteD">#dddddd</color>
+    <color name="whiteC">#cccccc</color>
+    <color name="whiteA">#aaaaaa</color>
+    <color name="background">#FF000000</color>
+    <color name="lantalk_background">#282828</color>
+    <color name="whiteE">#302e2e</color>
+    <color name="whiteF">#c5c5c5</color>
+    <color name="whiteH">#bdbdbd</color>
+    <color name="deepreda">#FF6600</color>
+    <color name="deepred">#aa0000</color>
+    <color name="deeporange">#f46b00</color>
+    <color name="yellow">#ffaf35</color>
+    <color name="yellowA">#7F5F48</color>
+    <color name="purple">#613cbd</color>
+    <color name="blue">#00b5e4</color>
+    <color name="background_translucence">#30575759</color>
+    <color name="background_monitor">#30ffffff</color>
+     <color name="background_security">#08ffffff</color>
+    <color name="golden">#c19b71</color>
+    
+    <color name="number_bg">#222121</color>
+    <color name="commom_pressed">#4d4e4e</color>
+    <color name="control_normal">#333334</color>
+    <color name="tips_head">#2b99c2</color>
+    <color name="tips_content">#999999</color>
+    <color name="room_number">#b7b5b5</color>
+    
+    <color name="launcher_gray">#828080</color>
+    <color name="launcher_blue">#11a6e0</color>
+    <color name="gradedtext_begin">#FFe6ba88</color>
+    <color name="gradedtext_end">#FFB98f5e</color>
+    <color name="gradedtext_disabled">#58e6ba88</color>
+    <color name="grid_bound">#FF383738</color>
+    <color name="griditem_bound">#FFe6ba88</color>
+    <color name="grid_pressed">#FF403c38</color>
+    <color name="blacklist_text">#6f6c6f</color>
+    <color name="golden_return_vp_bcg">#b59065</color>
+    <color name="title_line">#2d2d2d</color>
+    <color name="callboardkey_textcolor">#cfa472</color>
+</resources>

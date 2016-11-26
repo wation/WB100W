@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+    	android:layout_height="@dimen/title_high"
+    	 >
+   
+	    <LinearLayout
+	        android:id="@+id/layoutBack"
+	        style="@style/return_vipermain_style">
+	
+	        <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:src="@drawable/back_space"
+	            android:visibility="invisible" />
+	
+	        <TextView
+	            android:id="@+id/textViewBackTitle"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:layout_marginLeft="18dp"
+	            android:text="@string/main"
+	            android:textColor="@color/white"
+	            android:textSize="@dimen/fontSize61"
+	            android:visibility="invisible" />
+	    </LinearLayout>
+	
+	    <TextView
+	        android:id="@+id/textViewTitle"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:text=""
+	        android:textColor="@color/white"
+	        android:textSize="@dimen/fontSize71"
+	        android:visibility="invisible" />
+	    
+		<View 
+	        style="@style/title_line_style"
+	        android:visibility="invisible"/>
+	</RelativeLayout>
+</RelativeLayout>

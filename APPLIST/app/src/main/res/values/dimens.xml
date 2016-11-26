@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="fontSize1">6sp</dimen>
+    <dimen name="fontSize2">10sp</dimen>
+    <dimen name="fontSize21">12sp</dimen>
+    <dimen name="fontSize3">14sp</dimen>
+    <dimen name="fontSize31">16sp</dimen>
+    <dimen name="fontSize4">18sp</dimen>
+    <dimen name="fontSize41">20sp</dimen>
+    <dimen name="fontSize5">22sp</dimen>
+    <dimen name="fontSize51">24sp</dimen>
+    <dimen name="fontSize6">26sp</dimen>
+     <dimen name="fontSize61">28sp</dimen>
+    <dimen name="fontSize7">30sp</dimen>
+    <dimen name="fontSize71">32sp</dimen>
+    <dimen name="fontSize8">34sp</dimen>
+    <dimen name="fontSize9">38sp</dimen>
+    <dimen name="fontSize10">42sp</dimen>
+    <dimen name="fontSize11">46sp</dimen>
+    <dimen name="fontSize12">50sp</dimen>
+    <dimen name="fontSize13">48sp</dimen>
+    <dimen name="lantalkKeyboardGridHeight">98dp</dimen>
+    <dimen name="mainListHeight">86dp</dimen>
+    <dimen name="securitySetupButtonWidth">100dp</dimen>
+    <dimen name="propertyphonehight">55dp</dimen>
+    <dimen name="msgmediahight">114dp</dimen>
+    <dimen name="maintextmargin">16dp</dimen>
+    <dimen name="mainiconmargin">3dp</dimen>
+    <dimen name="navigationbarbuttonmargin">1dp</dimen>
+    <dimen name="lantalk_talkingbtnmargin">50dp</dimen>
+    <dimen name="dp1">1dp</dimen>
+    <dimen name="dp2">2dp</dimen>
+    <dimen name="dp3">3dp</dimen>
+    <dimen name="dp4">4dp</dimen>
+    <dimen name="dp5">5dp</dimen>
+    <dimen name="dp6">6dp</dimen>
+    <dimen name="dp7">7dp</dimen>
+    <dimen name="dp8">8dp</dimen>
+    <dimen name="dp9">9dp</dimen>
+    <dimen name="dp10">10dp</dimen>
+    <dimen name="dp12">12dp</dimen>
+    <dimen name="dp15">15dp</dimen>
+    <dimen name="dp16">16dp</dimen>
+    <dimen name="dp18">18dp</dimen>
+    <dimen name="dp20">20dp</dimen>
+    <dimen name="dp22">22dp</dimen>
+    <dimen name="dp30">30dp</dimen>
+    <dimen name="dp35">35dp</dimen>
+    <dimen name="dp40">40dp</dimen>
+    <dimen name="dp48">48dp</dimen>
+    <dimen name="dp50">50dp</dimen>
+    <dimen name="dp60">60dp</dimen>
+    <dimen name="dp80">80dp</dimen>
+    <dimen name="dp100">100dp</dimen>
+    <dimen name="dp120">120dp</dimen>
+    <dimen name="dp160">160dp</dimen>
+    <!-- 左侧菜单栏子项高度 -->
+    <dimen name="leftmenu_item_height">80dp</dimen>
+    <!-- RadioButton换行时与上面的高度 -->
+    <dimen name="appli_radio_margin_top">10dp</dimen>
+
+     <dimen name="add_voice_msg_bottom">65dp</dimen>
+     <dimen name="add_voice_msg_btn_width">120dp</dimen>
+     <dimen name="add_voice_msg_btn_heigh">50dp</dimen>
+     <dimen name="title_high">63dp</dimen>
+     <dimen name="callkeyboard_width">245dp</dimen>
+     <dimen name="adjust_sound_bg_height">60dp</dimen>
+     <dimen name="adjust_sound_bg_width">400dp</dimen>
+     <dimen name="msg_list_marginLeft1">12dp</dimen>
+    <dimen name="msg_list_marginLeft2">5dp</dimen>
+    <dimen name="msg_log_width">65dp</dimen>
+    <dimen name="msg_log_height">59dp</dimen>
+    
+</resources>

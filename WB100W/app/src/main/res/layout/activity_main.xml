@@ -1,0 +1,276 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/bg03">
+    <RelativeLayout
+        android:id="@+id/titleLayout"
+	    android:layout_width="match_parent"
+	    android:layout_height="60px"
+	    android:visibility="visible" >
+	    <RelativeLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_centerInParent="true"
+		    android:paddingLeft="20dip" >
+		    <ImageView
+		        android:id="@+id/batteryImageView"
+			    android:layout_width="46px"
+			    android:layout_height="21px"
+			    android:layout_centerVertical="true"
+			    android:background="@drawable/icon_battery_full"/>
+		    <ImageView
+		        android:id="@+id/wifiImageView"
+		        android:layout_toRightOf="@+id/batteryImageView"
+		        android:layout_marginLeft="10dip"
+			    android:layout_width="28px"
+			    android:layout_height="22px"
+			    android:layout_centerVertical="true"
+			    android:background="@drawable/icon_wifi_3" />
+		    <com.example.wb100w.ui.apps.ArialBlackTextView
+		        android:id="@+id/timeTextView"
+		        android:layout_centerInParent="true"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="14:41"
+			    style="@style/down_radius1_black_style" />
+		    <com.example.wb100w.ui.apps.ArialBlackTextView
+		        android:id="@+id/dateTextView"
+			    android:layout_centerVertical="true"
+		        android:layout_alignParentRight="true"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="10dip"
+			    android:text="Friday.Dec 11"
+			    style="@style/down_radius1_black_style" />
+	        
+	    </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+	    android:id="@+id/bodyLayout"
+	    android:layout_below="@+id/titleLayout"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" >
+	    <ImageView
+	        android:id="@+id/firstBarImageView"
+		    android:layout_width="600px"
+		    android:layout_height="wrap_content"
+		    android:background="@drawable/bar"
+		    android:layout_alignParentBottom="true"
+		    android:layout_centerHorizontal="true"
+		    android:layout_marginBottom="220dip"
+		    android:visibility="invisible" />
+	    <ImageView
+	        android:id="@+id/secondBarImageView"
+		    android:layout_width="600px"
+		    android:layout_height="wrap_content"
+		    android:background="@drawable/bar2"
+		    android:layout_alignParentBottom="true"
+		    android:layout_centerHorizontal="true"
+		    android:visibility="invisible" />
+	    <LinearLayout
+	        android:id="@+id/firstMenuLayout"
+		    android:layout_width="600px"
+		    android:layout_height="141px"
+		    android:orientation="horizontal"
+		    android:layout_alignParentBottom="true"
+		    android:layout_centerHorizontal="true"
+		    android:layout_marginBottom="229px" >
+		    <RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_weight="1" >
+		        <Button
+		            android:id="@+id/mirroringButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerInParent="true"
+		            android:background="@drawable/mirroring_button_selector"> 
+		        </Button>
+		    </RelativeLayout>
+		    <RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_weight="1" >
+		        <Button 
+		            android:id="@+id/sharingButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerInParent="true"
+		            android:background="@drawable/sharing_button_selector"/>
+		    </RelativeLayout>
+		    <RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_weight="1" >
+		        <Button 
+		            android:id="@+id/myAppButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerInParent="true"
+		            android:background="@drawable/myapp_button_selector"/>
+		    </RelativeLayout>
+	    </LinearLayout>
+	    <LinearLayout
+	        android:id="@+id/firstMenuTextLayout"
+		    android:layout_width="600px"
+		    android:layout_height="26dip"
+		    android:orientation="horizontal"
+		    android:layout_centerHorizontal="true"
+		    android:layout_alignParentBottom="true"
+		    android:layout_marginBottom="302dip"
+		    android:visibility="invisible" >
+		    <RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_weight="1" >
+			    <com.example.wb100w.ui.apps.ArialBlackTextView
+				    android:layout_centerInParent="true"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="Mirroring"
+				    style="@style/down_radius1_black_style" />
+		    </RelativeLayout>
+		    <RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_weight="1" >
+			    <com.example.wb100w.ui.apps.ArialBlackTextView
+				    android:layout_centerInParent="true"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="Sharing"
+				    style="@style/down_radius1_black_style" />
+		    </RelativeLayout>
+		    <RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_weight="1" >
+			    <com.example.wb100w.ui.apps.ArialBlackTextView
+				    android:layout_centerInParent="true"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="My App"
+				    style="@style/down_radius1_black_style" />
+		    </RelativeLayout>
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:id="@+id/secondMenuLayout"
+		    android:layout_width="600px"
+		    android:layout_height="141px"
+		    android:orientation="horizontal"
+		    android:layout_alignParentBottom="true"
+		    android:layout_centerHorizontal="true"
+		    android:layout_marginBottom="48px" >
+		    <RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_weight="1" >
+		        <Button 
+		            android:id="@+id/browserButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerInParent="true"
+		            android:background="@drawable/browser_button_selector">
+		        </Button>
+		    </RelativeLayout>
+		    <RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_weight="1" >
+		        <Button 
+		            android:id="@+id/multimediaButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerInParent="true"
+		            android:background="@drawable/multimedia_button_selector"/>
+		    </RelativeLayout>
+		    <RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_weight="1" >
+		        <Button 
+		            android:id="@+id/settingsButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerInParent="true"
+		            android:background="@drawable/settings_button_selector"/>
+		    </RelativeLayout>
+	    </LinearLayout>
+	    <LinearLayout
+	        android:id="@+id/secondMenuTextLayout"
+		    android:layout_width="600px"
+		    android:layout_height="26dip"
+		    android:orientation="horizontal"
+		    android:layout_alignParentBottom="true"
+		    android:layout_centerHorizontal="true"
+		    android:layout_marginBottom="37dip"
+		    android:visibility="invisible">
+		    <RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_weight="1" >
+			    <com.example.wb100w.ui.apps.ArialBlackTextView
+				    android:layout_centerInParent="true"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="Browser"
+				    style="@style/down_radius1_black_style" />
+		    </RelativeLayout>
+		    <RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_weight="1" >
+			    <com.example.wb100w.ui.apps.ArialBlackTextView
+				    android:layout_centerInParent="true"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="Multimedia"
+				    style="@style/down_radius1_black_style" />
+		    </RelativeLayout>
+		    <RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_weight="1" >
+			    <com.example.wb100w.ui.apps.ArialBlackTextView
+				    android:layout_centerInParent="true"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="Setting"
+				    style="@style/down_radius1_black_style" />
+		    </RelativeLayout>
+	    </LinearLayout>
+	    <LinearLayout
+	        android:layout_alignParentRight="true"
+		    android:layout_width="20px"
+		    android:layout_height="wrap_content"
+		    android:layout_centerVertical="true"
+		    android:layout_marginRight="10dip"
+		    android:orientation="vertical" >
+		    <RelativeLayout
+				android:layout_width="20px"
+				android:layout_height="280px"
+				android:background="@drawable/cbg_volum_bg" >
+			    <VerticalSeekBar
+					android:layout_marginLeft="6.4px"
+					android:layout_marginRight="6.4px"
+					android:layout_marginTop="8px"
+					android:layout_marginBottom="8px"
+			        android:id="@+id/seekBar"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:background="@drawable/icon_volume"
+					android:layout_alignParentBottom="true"/>
+		    </RelativeLayout>
+		    <Button
+		        android:id="@+id/muteImageView"
+		        android:layout_marginTop="4dip"
+		        android:layout_gravity="center_horizontal"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:background="@drawable/icon_mute_off" />
+	    </LinearLayout>
+	</RelativeLayout>
+
+</RelativeLayout>
