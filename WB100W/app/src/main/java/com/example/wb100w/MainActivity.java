@@ -312,8 +312,8 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
     @Override
     public void onProgressChanged(int progress) {
         Log.i(TAG, "progress:" + progress);
+        volumePlaneLayout.setVisibility(View.VISIBLE);
         hideVolumePlaneHandler.removeMessages(0);
-        hideVolumePlaneHandler.sendEmptyMessageDelayed(0, 3000);
         volumeLayout.setVisibility(progress > 0 ? View.VISIBLE : View.INVISIBLE);
         int volumeValue = convertHeightToVolumeValue(progress);
         setVolumeViewByVolume(volumeValue);
