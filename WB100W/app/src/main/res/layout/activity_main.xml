@@ -242,6 +242,7 @@
 		    </RelativeLayout>
 	    </LinearLayout>
 	    <LinearLayout
+			android:id="@+id/volumePlaneLayout"
 	        android:layout_alignParentRight="true"
 		    android:layout_width="20px"
 		    android:layout_height="wrap_content"

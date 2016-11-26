@@ -15,6 +15,17 @@ public class VerticalSeekBar extends ImageView {
     int maxHeight = 0;
     int minHeight = 0;
 
+    public interface OnDragListener {
+        void onDraging(int progress);
+        void onDragEnd(int progress);
+    }
+
+    private OnDragListener mOnDragEndListener;
+
+    public void setOnDragEndListener(OnDragListener listener) {
+        mOnDragEndListener = listener;
+    }
+
     public VerticalSeekBar(Context context) {
         super(context);
     }
@@ -48,6 +59,7 @@ public class VerticalSeekBar extends ImageView {
 
     float lastY = 0;
     boolean dragStart = false;
+    int height;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (!isEnabled()) {
@@ -62,14 +74,20 @@ public class VerticalSeekBar extends ImageView {
             case MotionEvent.ACTION_MOVE:
                 if (dragStart) {
                     float distance = lastY - event.getY();
-                    int height = (int) (getHeight() + distance);
+                    height = (int) (getHeight() + distance);
                     Log.i(TAG, "y:" + event.getY() + ",distance:" + distance + ", height:" + height);
                     height = height > maxHeight ? maxHeight : height;
                     height = height < minHeight ? minHeight : height;
                     setProgress(height);
+                    if (mOnDragEndListener != null) {
+                        mOnDragEndListener.onDraging(height);
+                    }
                 }
                 break;
             case MotionEvent.ACTION_UP:
+                if (dragStart && mOnDragEndListener != null) {
+                    mOnDragEndListener.onDragEnd(height);
+                }
                 dragStart = false;
                 break;
 

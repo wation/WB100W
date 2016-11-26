@@ -14,6 +14,8 @@ import android.media.AudioManager;
 import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -26,6 +28,7 @@ import android.view.View.OnHoverListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
@@ -40,13 +43,14 @@ import java.util.TimerTask;
 import java.util.concurrent.RunnableFuture;
 
 
-public class MainActivity extends Activity implements OnClickListener, OnHoverListener {
+public class MainActivity extends Activity implements OnClickListener, OnHoverListener, VerticalSeekBar.OnDragListener {
 
     private static final String TAG = "MainActivity";
     private Button mirroringButton, sharingButton, myAppButton, browserButton, multimediaButton, settingsButton, muteImageView;
     private ImageView batteryImageView, wifiImageView, volumeImageView;
     private TextView timeTextView, dateTextView;
     private VerticalSeekBar seekBar;
+    private LinearLayout volumePlaneLayout;
 
     private static final int MAX_VOLUME_HEIGHT = 264;
     // wifi相关
@@ -140,8 +144,9 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
         Log.d(TAG, "max : " + maxVolumeValue + " current : " + currentVolumeValue);
         setVolumeViewByVolume(currentVolumeValue);
         seekBar.setMaxHeight(MAX_VOLUME_HEIGHT);
-        seekBar.setMinHeight(convertVolumeValueToHeight(1));
+        seekBar.setMinHeight(convertVolumeValueToHeight(0));
         seekBar.setProgress(convertVolumeValueToHeight(currentVolumeValue));
+        volumePlaneLayout.setVisibility(View.INVISIBLE);
     }
 
 
@@ -162,6 +167,7 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
         volumeImageView = (ImageView) findViewById(R.id.volumeImageView);
         muteImageView = (Button) findViewById(R.id.muteImageView);
         seekBar = (VerticalSeekBar) findViewById(R.id.seekBar);
+        volumePlaneLayout = (LinearLayout) findViewById(R.id.volumePlaneLayout);
 
         mirroringButton.setOnClickListener(this);
         sharingButton.setOnClickListener(this);
@@ -186,7 +192,7 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
 
         muteImageView.setOnClickListener(this);
 
-        //seekBar.setOnSeekBarChangeListener(this);
+        seekBar.setOnDragEndListener(this);
     }
 
     private int convertVolumeValueToHeight(int volumeValue) {
@@ -307,6 +313,24 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
         }
         return false;
     }
+
+    @Override
+    public void onDraging(int progress) {
+        hideVolumePlaneHandler.removeMessages(0);
+        hideVolumePlaneHandler.sendEmptyMessageDelayed(0, 3000);
+    }
+
+    @Override
+    public void onDragEnd(int progress) {
+        hideVolumePlaneHandler.removeMessages(0);
+        hideVolumePlaneHandler.sendEmptyMessageDelayed(0, 3000);
+        currentVolumeValue = convertHeightToVolumeValue(progress);
+        lastVolumeValue = currentVolumeValue;
+        Log.i(TAG, "volume:" + currentVolumeValue + ", height:" + progress);
+        mAudioManager.setStreamVolume(VOLUME_TYPE, currentVolumeValue, 0);
+        setVolumeViewByVolume(currentVolumeValue);
+
+    }
 //
 //    @Override
 //    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -408,6 +432,9 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_VOLUME_DOWN || event.getKeyCode() == KeyEvent.KEYCODE_VOLUME_UP) {
+            volumePlaneLayout.setVisibility(View.VISIBLE);
+            hideVolumePlaneHandler.removeMessages(0);
+            hideVolumePlaneHandler.sendEmptyMessageDelayed(0, 3000);
             currentVolumeValue = mAudioManager
                     .getStreamVolume(VOLUME_TYPE);
             lastVolumeValue = currentVolumeValue;
@@ -418,4 +445,13 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
         }
         return super.dispatchKeyEvent(event);
     }
+
+    private Handler hideVolumePlaneHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            volumePlaneLayout.setVisibility(View.INVISIBLE);
+        }
+    };
 }
