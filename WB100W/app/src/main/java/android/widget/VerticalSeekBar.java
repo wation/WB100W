@@ -1,7 +1,6 @@
 package android.widget;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -15,15 +14,15 @@ public class VerticalSeekBar extends ImageView {
     int maxHeight = 0;
     int minHeight = 0;
 
-    public interface OnDragListener {
-        void onDraging(int progress);
-        void onDragEnd(int progress);
+    public interface OnSeekChangedListener {
+        void onProgressChanged(int progress);
+        void onTrackingEnd(int progress);
     }
 
-    private OnDragListener mOnDragEndListener;
+    private OnSeekChangedListener mOnSeekChangedListener;
 
-    public void setOnDragEndListener(OnDragListener listener) {
-        mOnDragEndListener = listener;
+    public void setOnSeekChangedListener(OnSeekChangedListener listener) {
+        mOnSeekChangedListener = listener;
     }
 
     public VerticalSeekBar(Context context) {
@@ -79,14 +78,11 @@ public class VerticalSeekBar extends ImageView {
                     height = height > maxHeight ? maxHeight : height;
                     height = height < minHeight ? minHeight : height;
                     setProgress(height);
-                    if (mOnDragEndListener != null) {
-                        mOnDragEndListener.onDraging(height);
-                    }
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                if (dragStart && mOnDragEndListener != null) {
-                    mOnDragEndListener.onDragEnd(height);
+                if (dragStart && mOnSeekChangedListener != null) {
+                    mOnSeekChangedListener.onTrackingEnd(height);
                 }
                 dragStart = false;
                 break;
@@ -112,5 +108,8 @@ public class VerticalSeekBar extends ImageView {
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) getLayoutParams();
         params.height = progress;
         setLayoutParams(params);
+        if (mOnSeekChangedListener != null) {
+            mOnSeekChangedListener.onProgressChanged(progress);
+        }
     }
 }

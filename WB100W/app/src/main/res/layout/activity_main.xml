@@ -250,6 +250,7 @@
 		    android:layout_marginRight="10dip"
 		    android:orientation="vertical" >
 		    <RelativeLayout
+				android:id="@+id/volumeLayout"
 				android:layout_width="20px"
 				android:layout_height="280px"
 				android:background="@drawable/cbg_volum_bg" >

@@ -1,13 +1,10 @@
 package com.example.wb100w;
 
-import com.example.wb100w.ui.apps.ListOfAppsActivity;
-
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
@@ -23,15 +20,12 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
 import android.view.View.OnHoverListener;
-import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VerticalSeekBar;
@@ -40,10 +34,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.RunnableFuture;
 
 
-public class MainActivity extends Activity implements OnClickListener, OnHoverListener, VerticalSeekBar.OnDragListener {
+public class MainActivity extends Activity implements OnClickListener, OnHoverListener, VerticalSeekBar.OnSeekChangedListener {
 
     private static final String TAG = "MainActivity";
     private Button mirroringButton, sharingButton, myAppButton, browserButton, multimediaButton, settingsButton, muteImageView;
@@ -51,6 +44,7 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
     private TextView timeTextView, dateTextView;
     private VerticalSeekBar seekBar;
     private LinearLayout volumePlaneLayout;
+    private RelativeLayout volumeLayout;
 
     private static final int MAX_VOLUME_HEIGHT = 264;
     // wifi相关
@@ -168,6 +162,7 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
         muteImageView = (Button) findViewById(R.id.muteImageView);
         seekBar = (VerticalSeekBar) findViewById(R.id.seekBar);
         volumePlaneLayout = (LinearLayout) findViewById(R.id.volumePlaneLayout);
+        volumeLayout = (RelativeLayout) findViewById(R.id.volumeLayout);
 
         mirroringButton.setOnClickListener(this);
         sharingButton.setOnClickListener(this);
@@ -192,7 +187,7 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
 
         muteImageView.setOnClickListener(this);
 
-        seekBar.setOnDragEndListener(this);
+        seekBar.setOnSeekChangedListener(this);
     }
 
     private int convertVolumeValueToHeight(int volumeValue) {
@@ -315,13 +310,17 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
     }
 
     @Override
-    public void onDraging(int progress) {
+    public void onProgressChanged(int progress) {
+        Log.i(TAG, "progress:" + progress);
         hideVolumePlaneHandler.removeMessages(0);
         hideVolumePlaneHandler.sendEmptyMessageDelayed(0, 3000);
+        volumeLayout.setVisibility(progress > 0 ? View.VISIBLE : View.INVISIBLE);
+        int volumeValue = convertHeightToVolumeValue(progress);
+        setVolumeViewByVolume(volumeValue);
     }
 
     @Override
-    public void onDragEnd(int progress) {
+    public void onTrackingEnd(int progress) {
         hideVolumePlaneHandler.removeMessages(0);
         hideVolumePlaneHandler.sendEmptyMessageDelayed(0, 3000);
         currentVolumeValue = convertHeightToVolumeValue(progress);
