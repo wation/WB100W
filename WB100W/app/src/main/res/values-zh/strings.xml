@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WB100W</string>
+    <string name="app_hider">隐藏应用</string>
+    <string name="action_settings">设置</string>
+    <string name="day">日</string>
+    <string name="hello_world">你好。</string>
+    <string name="main">首页</string>
+</resources>

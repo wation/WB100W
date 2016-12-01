@@ -40,7 +40,7 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
 
     private static final String TAG = "MainActivity";
     private Button mirroringButton, sharingButton, myAppButton, browserButton, multimediaButton, settingsButton, muteImageView;
-    private ImageView batteryImageView, wifiImageView, volumeImageView;
+    private ImageView batteryImageView, wifiImageView;
     private TextView timeTextView, dateTextView;
     private VerticalSeekBar seekBar;
     private LinearLayout volumePlaneLayout;
@@ -124,7 +124,7 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
                         String time = new SimpleDateFormat("HH:mm").format(new Date(System.currentTimeMillis()));
                         timeTextView.setText(time);
                         String date = new SimpleDateFormat("E.MMM d").format(new Date(System.currentTimeMillis()));
-                        dateTextView.setText(date);
+                        dateTextView.setText(date + getString(R.string.day));
                     }
                 });
             }
@@ -158,7 +158,6 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
         wifiImageView = (ImageView) findViewById(R.id.wifiImageView);
         timeTextView = (TextView) findViewById(R.id.timeTextView);
         dateTextView = (TextView) findViewById(R.id.dateTextView);
-        volumeImageView = (ImageView) findViewById(R.id.volumeImageView);
         muteImageView = (Button) findViewById(R.id.muteImageView);
         seekBar = (VerticalSeekBar) findViewById(R.id.seekBar);
         volumePlaneLayout = (LinearLayout) findViewById(R.id.volumePlaneLayout);
