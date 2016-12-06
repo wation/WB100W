@@ -32,6 +32,7 @@ import android.widget.VerticalSeekBar;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -41,7 +42,7 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
     private static final String TAG = "MainActivity";
     private Button mirroringButton, sharingButton, myAppButton, browserButton, multimediaButton, settingsButton, muteImageView;
     private ImageView batteryImageView, wifiImageView;
-    private TextView timeTextView, dateTextView;
+    private TextView timeTextView, dateTextView, batteryPersentageTextView;
     private VerticalSeekBar seekBar;
     private LinearLayout volumePlaneLayout;
     private RelativeLayout volumeLayout;
@@ -123,8 +124,8 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
                     public void run() {
                         String time = new SimpleDateFormat("HH:mm").format(new Date(System.currentTimeMillis()));
                         timeTextView.setText(time);
-                        String date = new SimpleDateFormat("E.MMM d").format(new Date(System.currentTimeMillis()));
-                        dateTextView.setText(date + getString(R.string.day));
+                        String date = new SimpleDateFormat("E.MMM d", Locale.ENGLISH).format(new Date(System.currentTimeMillis()));
+                        dateTextView.setText(date);
                     }
                 });
             }
@@ -158,6 +159,7 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
         wifiImageView = (ImageView) findViewById(R.id.wifiImageView);
         timeTextView = (TextView) findViewById(R.id.timeTextView);
         dateTextView = (TextView) findViewById(R.id.dateTextView);
+        batteryPersentageTextView = (TextView) findViewById(R.id.batteryPersentageTextView);
         muteImageView = (Button) findViewById(R.id.muteImageView);
         seekBar = (VerticalSeekBar) findViewById(R.id.seekBar);
         volumePlaneLayout = (LinearLayout) findViewById(R.id.volumePlaneLayout);
@@ -358,17 +360,18 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
             //判断它是否是为电量变化的Broadcast Action
             if (Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())) {
 
+                //获取当前电量
+                int level = intent.getIntExtra("level", 0);
+                //电量的总刻度
+                int scale = intent.getIntExtra("scale", 100);
+                //把它转成百分比
+                //tv.setText("电池电量为"+((level*100)/scale)+"%");
+                int value = (level*100)/scale;
+                batteryPersentageTextView.setText(value + "%");
                 int status=intent.getIntExtra("status", BatteryManager.BATTERY_STATUS_UNKNOWN);
                 if(status==BatteryManager.BATTERY_STATUS_CHARGING) {
                     batteryImageView.setBackgroundResource(R.drawable.icon_battery_charge);
                 } else {
-                    //获取当前电量
-                    int level = intent.getIntExtra("level", 0);
-                    //电量的总刻度
-                    int scale = intent.getIntExtra("scale", 100);
-                    //把它转成百分比
-                    //tv.setText("电池电量为"+((level*100)/scale)+"%");
-                    int value = (level*100)/scale;
                     if (value < 10) {
                         batteryImageView.setBackgroundResource(R.drawable.icon_battery_no);
                     } else {
