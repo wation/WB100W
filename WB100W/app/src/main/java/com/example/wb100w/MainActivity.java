@@ -7,6 +7,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
@@ -226,31 +227,26 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
     @Override
     public void onClick(View v) {
         try {
-            Intent mIntent = new Intent();
-            ComponentName comp = null;
+            String packageName = "";
+            PackageManager pm = getPackageManager();
             switch (v.getId()) {
                 case R.id.mirroringButton:
-                    comp = new ComponentName("com.rockchip.wfd", "com.rockchip.wfd.WifiDisplayActivity");
+                    packageName = "com.rockchip.wfd";
                     break;
                 case R.id.sharingButton:
-                    comp = new ComponentName("com.waxrain.airplaydmr2", "com.waxrain.ui.WaxPlayerSetting");
+                    packageName = "com.waxrain.airplaydmr2";
                     break;
                 case R.id.myAppButton:
-
-//                    Intent it = new Intent(this, ListOfAppsActivity.class);
-//                    it.putExtra("from", "首页");
-//                    startActivity(it);
-//                    return;
-                    comp = new ComponentName("com.example.applist", "com.example.applist.ListOfAppsActivity");
+                    packageName = "com.example.applist";
                     break;
                 case R.id.browserButton:
-                    comp = new ComponentName("com.android.browser", "com.android.browser.BrowserActivity");
+                    packageName = "com.android.browser";
                     break;
                 case R.id.multimediaButton:
-                    comp = new ComponentName("kantv.filemanager", "kantv.filemanager.activity.MainActivity");
+                    packageName = "com.github.multimedia";
                     break;
                 case R.id.settingsButton:
-                    comp = new ComponentName("com.android.settings", "com.android.settings.Settings");
+                    packageName = "com.android.settings";
                     break;
 
                 case R.id.muteImageView:
@@ -273,11 +269,9 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
                     //volumeImageView.setLayoutParams(params);
                     return;
             }
-            mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            mIntent.setComponent(comp);
-            mIntent.setAction("android.intent.action.VIEW");
-            startActivity(mIntent);
-        } catch (ActivityNotFoundException e) {
+            Intent intent = pm.getLaunchIntentForPackage(packageName);
+            startActivity(intent);
+        } catch (NullPointerException e) {
             Toast.makeText(this, "找不到该应用", Toast.LENGTH_SHORT).show();
         }
     }

@@ -2,10 +2,13 @@ package com.example.applist;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +36,19 @@ public class AppTools {
 		}
 	}
 
+	static void getList(Context context) {
+		Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+		mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+		List<ResolveInfo> mApps = context.getPackageManager().queryIntentActivities(mainIntent, 0);
+		for (int i = 0; i < mApps.size(); i++) {
+			ResolveInfo info = mApps.get(i);
+			String appLabel = info.loadLabel(context.getPackageManager()).toString();
+			String packagename = info.activityInfo.packageName;
+			String appname = info.activityInfo.name;
+			Log.i("appshow", "appLabel:" + appLabel + " ||  packagename:" + packagename
+					+ " ||  appname:" + appname);
+		}
+	}
 
 	public static ArrayList<AppInfo> getAllApps(Context context){
 		ArrayList<AppInfo> items = new ArrayList<AppInfo>();

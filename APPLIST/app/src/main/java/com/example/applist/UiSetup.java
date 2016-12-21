@@ -47,7 +47,7 @@ public class UiSetup {
     public static boolean setBackTitle(final Activity ct, String title)
     {
         Intent intent = ct.getIntent();
-        String backTitle = ct.getString(R.string.main);
+        String backTitle = ct.getString(R.string.app_name);
         if (intent.hasExtra("from")) {
             backTitle = intent.getStringExtra("from");
         }

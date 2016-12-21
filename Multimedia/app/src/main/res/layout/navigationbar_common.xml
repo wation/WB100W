@@ -30,7 +30,7 @@
 	            android:textColor="@color/white"
 	            android:textSize="@dimen/fontSize61"
 				style="@style/down_radius1_black_style"
-				android:visibility="visible" />
+				android:visibility="invisible" />
 	    </LinearLayout>
 	
 	    <TextView

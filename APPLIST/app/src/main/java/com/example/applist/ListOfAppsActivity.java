@@ -39,6 +39,7 @@ public class ListOfAppsActivity extends Activity implements OnPageChangeListener
 //		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE); //声明使用自定义标题
 		setContentView(R.layout.app_viewpager);
 		UiSetup.setBackTitle(this, "应用列表");
+		//AppTools.getList(this);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.app_title);//自定义布局赋值
 		mHandler = new Handler(){
 			public void handleMessage(android.os.Message msg) {

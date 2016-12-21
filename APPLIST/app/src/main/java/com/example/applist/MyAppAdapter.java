@@ -10,13 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MyAppAdapter extends BaseAdapter {
 	private ArrayList<AppInfo> items = new ArrayList<AppInfo>();
 	private Context context;
-	
-	
-	
+	private HashMap<String, Drawable> iconMap = new HashMap<>();
+
 	public MyAppAdapter(Context context,ArrayList<AppInfo> items){
 		this.context = context;
 		if(items!=null){
@@ -24,7 +24,15 @@ public class MyAppAdapter extends BaseAdapter {
 		}else{
 			items = new ArrayList<AppInfo>();
 		}
-		
+
+		iconMap.put("com.android.settings", context.getResources().getDrawable(R.drawable.btn_setting));
+		iconMap.put("com.android.browser", context.getResources().getDrawable(R.drawable.btn_browser));
+		iconMap.put("com.android.calculator2", context.getResources().getDrawable(R.drawable.btn_calculator));
+		iconMap.put("com.android.deskclock", context.getResources().getDrawable(R.drawable.btn_alam));
+		iconMap.put("com.android.providers.downloads.ui", context.getResources().getDrawable(R.drawable.btn_update));
+		iconMap.put("com.android.rk", context.getResources().getDrawable(R.drawable.btn_myfile));
+		iconMap.put("com.rockchip.wfd", context.getResources().getDrawable(R.drawable.btn_mirroring));
+		iconMap.put("com.waxrain.airplaydmr2", context.getResources().getDrawable(R.drawable.btn_sharing));
 	}
 	
 	@Override
@@ -54,8 +62,9 @@ public class MyAppAdapter extends BaseAdapter {
         }else{
         	holder = (viewHolder) convertView.getTag();
         }
-		final AppInfo info = getItem(position); 
-        holder.iv.setImageDrawable((Drawable) info.getIcon());
+		final AppInfo info = getItem(position);
+		Drawable drawable = iconMap.get(info.getPackageName());
+        holder.iv.setImageDrawable(drawable == null ? (Drawable) info.getIcon() : drawable);
         holder.tv.setText(info.getAppName());
 		return convertView;
 	}

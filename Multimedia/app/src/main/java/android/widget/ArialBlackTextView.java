@@ -1,9 +1,8 @@
-package com.example.applist;
+package android.widget;
 
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 /**
  * Created by wation on 16/11/14.
