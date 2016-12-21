@@ -20,16 +20,17 @@
 	            android:src="@drawable/back_space"
 	            android:visibility="invisible" />
 	
-	        <TextView
+	        <com.example.wb100w.ui.apps.ArialBlackTextView
 	            android:id="@+id/textViewBackTitle"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_gravity="center_vertical"
-	            android:layout_marginLeft="18dp"
+	            android:layout_marginLeft="40px"
 	            android:text="@string/main"
 	            android:textColor="@color/white"
 	            android:textSize="@dimen/fontSize61"
-	            android:visibility="invisible" />
+				style="@style/down_radius1_black_style"
+				android:visibility="visible" />
 	    </LinearLayout>
 	
 	    <TextView

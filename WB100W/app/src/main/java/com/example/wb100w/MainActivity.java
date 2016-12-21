@@ -372,8 +372,28 @@ public class MainActivity extends Activity implements OnClickListener, OnHoverLi
                 if(status==BatteryManager.BATTERY_STATUS_CHARGING) {
                     batteryImageView.setBackgroundResource(R.drawable.icon_battery_charge);
                 } else {
-                    if (value < 10) {
+                    if (value <= 0) {
                         batteryImageView.setBackgroundResource(R.drawable.icon_battery_no);
+                    } else if (value < 10) {
+                        batteryImageView.setBackgroundResource(R.drawable.icon_battery_l1);
+                    } else if (value < 20) {
+                        batteryImageView.setBackgroundResource(R.drawable.icon_battery_l2);
+                    } else if (value < 30) {
+                        batteryImageView.setBackgroundResource(R.drawable.icon_battery_l3);
+                    } else if (value < 40) {
+                        batteryImageView.setBackgroundResource(R.drawable.icon_battery_l4);
+                    } else if (value < 50) {
+                        batteryImageView.setBackgroundResource(R.drawable.icon_battery_l5);
+                    } else if (value < 60) {
+                        batteryImageView.setBackgroundResource(R.drawable.icon_battery_l6);
+                    } else if (value < 70) {
+                        batteryImageView.setBackgroundResource(R.drawable.icon_battery_l7);
+                    } else if (value < 80) {
+                        batteryImageView.setBackgroundResource(R.drawable.icon_battery_l8);
+                    } else if (value < 90) {
+                        batteryImageView.setBackgroundResource(R.drawable.icon_battery_l9);
+                    } else if (value < 100) {
+                        batteryImageView.setBackgroundResource(R.drawable.icon_battery_full);
                     } else {
                         batteryImageView.setBackgroundResource(R.drawable.icon_battery_full);
                     }
